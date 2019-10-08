@@ -26,6 +26,7 @@ namespace SJBR\StaticInfoTablesSv;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
+
 use SJBR\StaticInfoTables\Cache\ClassCacheManager;
 use SJBR\StaticInfoTables\Utility\DatabaseUpdateUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -38,30 +39,33 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class ext_update
 {
 
-	/**
-	 * Main function, returning the HTML content
-	 *
-	 * @return string HTML
-	 */
-	public function main()
-	{
-		$content = '';
-		$objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+    const EXTENSION_KEY = 'static_info_tables_sv';
 
-		// Clear the class cache
-		$classCacheManager = $objectManager->get(ClassCacheManager::class);
-		$classCacheManager->reBuild();
+    /**
+     * Main function, returning the HTML content
+     *
+     * @return string HTML
+     */
+    public function main()
+    {
+        $content = '';
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 
-		// Update the database
-		$databaseUpdateUtility = $objectManager->get(DatabaseUpdateUtility::class);
-		$databaseUpdateUtility->doUpdate('static_info_tables_sv');
+        // Clear the class cache
+        $classCacheManager = $objectManager->get(ClassCacheManager::class);
+        $classCacheManager->reBuild();
 
-		$content.= '<p>' . LocalizationUtility::translate('updateLanguageLabels', 'StaticInfoTables') . ' static_info_tables_sv.</p>';
-		return $content;
-	}
+        // Update the database
+        $databaseUpdateUtility = $objectManager->get(DatabaseUpdateUtility::class);
+        $databaseUpdateUtility->doUpdate(self::EXTENSION_KEY);
 
-	public function access()
-	{
-		return true;
-	}
+        $updateLanguageLabels = LocalizationUtility::translate('updateLanguageLabels', 'StaticInfoTables');
+        $content .= '<p>' . $updateLanguageLabels . ' ' . self::EXTENSION_KEY . '</p>';
+        return $content;
+    }
+
+    public function access()
+    {
+        return true;
+    }
 }
