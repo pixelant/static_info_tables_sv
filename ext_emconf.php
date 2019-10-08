@@ -13,7 +13,7 @@ $EM_CONF[$_EXTKEY] = [
     'description' => 'Swedish language pack for Static Info Tables.',
     'category' => 'misc',
     'shy' => 0,
-    'version' => '6.5.0',
+    'version' => '6.6.0',
     'dependencies' => '',
     'conflicts' => '',
     'priority' => '',
@@ -32,8 +32,8 @@ $EM_CONF[$_EXTKEY] = [
     'CGLcompliance_note' => '',
     'constraints' => [
         'depends' => [
-            'static_info_tables' => '6.4.0-6.5.99',
-            'typo3' => '7.6.0-8.99.99',
+            'typo3' => '8.7.0-9.5.99',
+            'static_info_tables' => '6.7.3-6.7.99',
         ],
         'conflicts' => [
         ],
