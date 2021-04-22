@@ -1,6 +1,13 @@
 <?php
 defined('TYPO3_MODE') || die('Access denied.');
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup(
-    '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:' . $_EXTKEY . '/Configuration/TypoScript/Extbase/setup.txt">'
-);
+call_user_func(function()
+{
+    $extensionKey = 'static_info_tables_sv';
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScript(
+        $extensionKey,
+        'setup',
+        '@import \'EXT:' . $extensionKey . '/Configuration/TypoScript/Extbase/setup.txt\''
+    );
+});
