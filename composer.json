@@ -16,6 +16,6 @@
   },
   "require": {
     "typo3/cms-core": ">=7.6.0 <9.0 || ^10.4.6",
-    "sjbr/static_info_tables": "^6.4.0"
+    "sjbr/static-info-tables": "^6.4.0"
   }
 }
